@@ -46,25 +46,13 @@ public class World
 	
 	public void generateLevel()
 	{
-		
-		int amount = 2;
-		for(int i = 0; i<amount; i++)
-		{	float y = rand.nextInt(1000-500)+500;
-			float x = rand.nextFloat() * (WORLD_WIDTH - Asteroid.ASTEROID_WIDTH) + Asteroid.ASTEROID_WIDTH / 2;
-			Asteroid smallAsteroid = new Asteroid(x, y);
-			smallAsteroids.add(smallAsteroid);
-		}
-		
 		ship = new SpaceShip(320/2);
-		platform = new Platform(50, 100, 50);
-		
-		
+		platform = new Platform(100, 100, 50);	
 	}
 	
 	public void update(float deltaTime, float f)
 	{
 		checkCollisions();
-		updateAsteroids(deltaTime);
 		updateShip(f);
 		
 	}
