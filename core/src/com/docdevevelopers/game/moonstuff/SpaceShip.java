@@ -17,7 +17,7 @@ public class SpaceShip extends DynamicRectangleGameObject
 		
 	}
 
-	public void update(float f) 
+	public void update(float f,boolean up) 
 	{
 		//bounds.x = position.x - bounds.width / 2;
 		//bounds.y = position.y - bounds.height / 2;
@@ -36,6 +36,20 @@ public class SpaceShip extends DynamicRectangleGameObject
 		
 		else if(position.x >= 243)
 			position.x=243;
+		
+		if(position.y <= 125)
+		{
+			position.y = 125;
+		}
+		if(up)
+		{
+			position.add(f, velocity.y * -2f);
+			
+		}
+		else
+		{
+			position.add(f, velocity.y * 0.1622f);
+		}
 		
 		
 		

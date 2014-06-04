@@ -1,3 +1,4 @@
+
 package com.docdevevelopers.game.moonstuff;
 
 import com.badlogic.gdx.Application.ApplicationType;
@@ -114,22 +115,28 @@ public class GameScreen implements Screen
 		ApplicationType appType = Gdx.app.getType();
 
 		// should work also with Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer)
-		if (appType == ApplicationType.Android || appType == ApplicationType.iOS) 
-			world.update(deltaTime, Gdx.input.getRoll());
-		else if(appType == ApplicationType.Desktop || appType == ApplicationType.WebGL)
+		if(appType == ApplicationType.Desktop || appType == ApplicationType.WebGL)
 		{
 			Gdx.input.setInputProcessor(new KeyHandler());
-			if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT))
+			if(world.state == 2)
 			{
-				world.update(deltaTime, -1f);
+				// Do nothing!!!
+			}
+			else if(Gdx.input.isKeyPressed(Input.Keys.DPAD_LEFT))
+			{
+				world.update(deltaTime, -1f,false);
 			}
 			else if(Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT))
 			{
-				world.update(deltaTime, 1f);
+				world.update(deltaTime, 1f,false);
+			}
+			else if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
+			{
+				world.update(deltaTime,0f,true);
 			}
 			else
 			{
-				world.update(deltaTime, 0f);
+				world.update(deltaTime, 0f,false);
 			}
 		}
 			

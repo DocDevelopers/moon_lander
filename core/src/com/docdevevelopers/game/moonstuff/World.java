@@ -19,41 +19,38 @@ public class World
 		
 		public void hit();
 	}
-	
+	public int state = 0;
 	public static final float WORLD_WIDTH = 320;
 	public static final float WORLD_HEIGHT = 480;
 	public static final int WORLD_STATE_RUNNING = 0;
 	public static final int WORLD_STATE_NEXT_LEVEL = 1;
 	public static final int WORLD_STATE_GAME_OVER = 2;
 	public static final Vector2 gravity = new Vector2(0, -9);
-	
-	public final List<Asteroid> smallAsteroids;
 	public SpaceShip ship;
 	public Platform platform;
 	public final WorldListener listener;
-	public final Random rand;
+
 
 	
 	
 	public World(WorldListener listener)
 	{
-		this.smallAsteroids = new ArrayList<Asteroid>();
 		this.listener = listener;
-		rand = new Random();
 		generateLevel();
 
 	}
 	
+	//Make all game objects
 	public void generateLevel()
 	{
 		ship = new SpaceShip(320/2);
-		platform = new Platform(100, 100, 50);	
+		platform = new Platform(100, 100);	
 	}
 	
-	public void update(float deltaTime, float f)
+	public void update(float deltaTime, float f,boolean up)
 	{
 		checkCollisions();
-		updateShip(f);
+		updateShip(f,up);
 		
 	}
 	
@@ -62,7 +59,8 @@ public class World
 		
 		if (Intersector.overlaps(platform.bounds,ship.bounds))
 		{
-			GameScreen.setScreen();
+			state = 2;
+			
 		}
 		
 			
@@ -70,22 +68,20 @@ public class World
 		
 	}
 
-	private void updateShip(float f) {
-		ship.update(f);
+	private void updateShip(float f,boolean up) {
+		ship.update(f,up);
+		if(up)
+			state=1;
+		if(up==false)
+			state=0;
+		checkCollisions();
+		
+		
+			
 		
 	}
 
-	public void updateAsteroids(float deltaTime)
-	{
-		int len = smallAsteroids.size();
-		for (int i = 0; i < len; i++) 
-		{
-			Asteroid asteroid = smallAsteroids.get(i);
-		
-			asteroid.update(deltaTime);
-			
-		}
-	}
+	
 	
 
 }

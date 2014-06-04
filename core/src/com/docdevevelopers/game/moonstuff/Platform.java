@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 
 public class Platform extends RectangleGameObject {
 
-	public Platform(float x, float width, float height) {
-		super(x, 100, width, height);
+	public Platform(float x, float width) {
+		super(x, 100, width, 50);
 		// TODO Auto-generated constructor stub
 	}
 	

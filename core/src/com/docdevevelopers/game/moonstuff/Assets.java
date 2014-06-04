@@ -10,9 +10,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Assets 
 {
-	public static Texture background,sprites,ship;
+	public static Texture background,sprites,ship,T,C;
 	public static Sound song;
-	public static TextureRegion smallAsteroid,mediumAsteroid,largeAsteroid,shipRegion,backgroundRegion;
+	public static TextureRegion shipRegion,backgroundRegion,TRegion,CRegion;
 
 	public static Texture loadTexture (String file) 
 	{
@@ -26,22 +26,17 @@ public class Assets
 	
 	public static void load()
 	{
-		/*
-		background = loadTexture("data/space.png");
-		
-		sprites = loadTexture("data/sprites.png");
-		
-		backgroundRegion = new TextureRegion(background,0,0,256,512);
-		
-		
-		smallAsteroid = new TextureRegion(sprites, 184, 67, 256, 256);
-		mediumAsteroid = new TextureRegion(sprites, 106, 41, 256, 256);
-		largeAsteroid = new TextureRegion(sprites, 11, 8, 256, 256);
-		shipRegion = new TextureRegion(sprites, 16, 116, 256, 256);
-		*/
+	
+		background = loadTexture("spacely.jpg");
 		ship = loadTexture("rocket.png");
+		T = loadTexture("rocketT.png");
+		C = loadTexture("rocketW_FIRE.png");
 		song = Gdx.audio.newSound(Gdx.files.internal("soundTrack.mp3"));
 		song.play();
+		
+		TRegion = new TextureRegion(T,0,0,39,59);
 		shipRegion = new TextureRegion(ship, 0, 0, 39, 59);
+		CRegion = new TextureRegion(C,0,0,39,59);
+		backgroundRegion = new TextureRegion(background,0,0,320,480);
 	}
 }

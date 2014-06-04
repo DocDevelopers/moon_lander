@@ -1,4 +1,4 @@
-package com.docdevevelopers.game.moonstuff;
+ package com.docdevevelopers.game.moonstuff;
 
 import java.util.Random;
 
@@ -36,16 +36,22 @@ public class WorldRenderer
 	public void renderBackground () {
 		batch.disableBlending();
 		batch.begin();
-		//batch.draw(Assets.backgroundRegion,0,0,320,480);
+		batch.draw(Assets.backgroundRegion,0,0,320,480);
 		batch.end();
 	}
 
 	public void renderObjects () {
 		batch.enableBlending();
 		batch.begin();
-		//;
-		//renderAsteroids();
-		batch.draw(Assets.shipRegion, world.ship.position.x, world.ship.position.y, Assets.shipRegion.getRegionWidth(), Assets.shipRegion.getRegionHeight());
+		if(world.state == 0)
+			batch.draw(Assets.TRegion, world.ship.position.x, world.ship.position.y, Assets.TRegion.getRegionWidth(), Assets.TRegion.getRegionHeight());
+		
+		else if(world.state == 1)
+			batch.draw(Assets.shipRegion, world.ship.position.x, world.ship.position.y, Assets.shipRegion.getRegionWidth(), Assets.shipRegion.getRegionHeight());
+			
+		else if(world.state == 2)
+			batch.draw(Assets.CRegion, world.ship.position.x, world.ship.position.y, Assets.CRegion.getRegionWidth(), Assets.CRegion.getRegionHeight());
+		
 		batch.end();
 		renderShapes();
 	}
@@ -53,37 +59,14 @@ public class WorldRenderer
 	private void renderShapes()
 	{
 		shapes.begin(ShapeType.Filled);
-		 shapes.setColor(.50f, .05f, .25f, 1);
+		 shapes.setColor(0f, 0f, 0f, 1);
 		 shapes.rect(0, 0, 480, 95);
 		 shapes.rect(world.platform.position.x, world.platform.position.y, world.platform.bounds.width, world.platform.bounds.height);
 		 
 		 shapes.end();
 	}
-	private void renderAsteroids () {
-		int len = world.smallAsteroids.size();
-		int big_count = 0;
-		int	med_count = 0;
-		int sm_count = 0;
-		for (int i = 0; i < len; i++) {
-			Asteroid asteroid = world.smallAsteroids.get(i);
-			if(asteroid.texture == Assets.largeAsteroid && big_count <= 1)
-			{
-				batch.draw(asteroid.texture, asteroid.position.x, asteroid.position.y, asteroid.texture.getRegionWidth(), asteroid.texture.getRegionHeight());
-				big_count++;
-			}
-			else if(asteroid.texture == Assets.mediumAsteroid && med_count <= 2)
-			{
-				batch.draw(asteroid.texture, asteroid.position.x, asteroid.position.y, asteroid.texture.getRegionWidth(), asteroid.texture.getRegionHeight());
-				med_count++;
-			}
-			else if(asteroid.texture == Assets.smallAsteroid && sm_count <= 3)
-			{
-				batch.draw(asteroid.texture, asteroid.position.x, asteroid.position.y, asteroid.texture.getRegionWidth(), asteroid.texture.getRegionHeight());
-				sm_count++;
-			}
-			batch.draw(asteroid.texture, asteroid.position.x, asteroid.position.y, asteroid.texture.getRegionWidth(), asteroid.texture.getRegionHeight());
-		}
-	}
+	
+	
 	
 
 }
