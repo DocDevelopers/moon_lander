@@ -46,6 +46,7 @@ public class WorldRenderer
 		
 		batch.enableBlending();
 		batch.begin();
+		
 		//Text display
 		BitmapFont font = new BitmapFont();
 		font.setColor(0f, 1.0f, 0f, 1.0f);
@@ -83,7 +84,7 @@ public class WorldRenderer
 		shapes.begin(ShapeType.Filled);
 		shapes.setColor(.5f, .5f, 0f, 1);
 		shapes.rect(world.platform.position.x, world.platform.position.y, world.platform.bounds.width, world.platform.bounds.height);
-		shapes.setColor(0f, 0f, 0f, 1);
+		shapes.setColor(.8f, .8f, .8f, 1);
 		shapes.rect(0, 0, 480, 95); 
 		shapes.end();
 	
