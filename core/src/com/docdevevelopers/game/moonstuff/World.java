@@ -1,25 +1,17 @@
 package com.docdevevelopers.game.moonstuff;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Vector2;
 
 public class World 
 {
+	//For future implementation. Would replace updateShip() method.
 	public interface WorldListener
 	{
-		public void slideLeft();
 		
-		public void slideRight();
-		
-		public void hit();
 	}
+	
 	public int state = 0;
+	public int score = 0;
 	public static final float WORLD_WIDTH = 320;
 	public static final float WORLD_HEIGHT = 480;
 	public static final int WORLD_STATE_RUNNING = 0;
@@ -43,42 +35,44 @@ public class World
 	//Make all game objects
 	public void generateLevel()
 	{
-		ship = new SpaceShip(320/2);
+		ship = new SpaceShip(320/2,World.this);
 		platform = new Platform(3);	
 	}
 	
+	//Update any object. Gets called on every refresh of renderer in GameScreen.
 	public void update(float deltaTime, float f,boolean up)
 	{
-		checkCollisions();
 		updateShip(f,up);
 		
 	}
 	
-	private void checkCollisions() 
+	private void checkCollisions(int x) 
 	{
 		
-		if (Intersector.overlaps(platform.bounds,ship.bounds))
+		if (x==2)
 		{
 			state = 2;
 			
 		}
-		
-			
-		
+		else if(ship.fuel == 0)
+		{
+			state = 3;
+		}
 		
 	}
 
-	private void updateShip(float f,boolean up) {
-		ship.update(f,up);
-		if(up)
+	private void updateShip(float f,boolean up)
+	{
+		
+		boolean x = up;
+		//thrusters on
+		if(x)
 			state=1;
-		if(up==false)
+		//thrusters off
+		if(x==false)
 			state=0;
-		checkCollisions();
-		
-		
-			
-		
+		int crash = ship.update(f,x);
+		checkCollisions(crash);
 	}
 
 	

@@ -34,7 +34,6 @@ public class MainMenuScreen implements Screen {
 
 		batcher.disableBlending();
 		batcher.begin();
-		//batcher.draw(Assets.backgroundRegion, 0, 0, 320, 480);
 		batcher.end();
 	}
 	@Override

@@ -31,11 +31,6 @@ public class GameScreen implements Screen
 	World world;
 	WorldListener worldListener;
 	WorldRenderer renderer;
-	Rectangle pauseBounds;
-	Rectangle resumeBounds;
-	Rectangle quitBounds;
-	int lastScore;
-	String scoreString;
 	
 	public GameScreen (Game game) {
 		this.game = game;
@@ -56,11 +51,6 @@ public class GameScreen implements Screen
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		renderer.render();
 		guiCam.update();
-		
-
-		
-		
-		
 	}
 		
 	public void update (float deltaTime) {

@@ -1,19 +1,18 @@
 package com.docdevevelopers.game.moonstuff;
 
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
-
 public class Platform extends RectangleGameObject {
 
 	public Platform(int diff) {
-		super(50, 100, 50, 50);
+		super(0, 100, 0, 25);
+		chgLoc(2);
+		
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
-	
-	private static float xPos()
+	//random placement of the platform
+	private float xPos()
 	{
 		float pX= (float)( Math.random() * 200)+1;
 		
@@ -21,7 +20,8 @@ public class Platform extends RectangleGameObject {
 		
 	
 	}
-	private static float width(int diff)
+	//difficulty algorithm. Not really that sophisticated.
+	private float width(int diff)
 	{
 		float result = 0;
 		if (diff==1)
@@ -40,13 +40,11 @@ public class Platform extends RectangleGameObject {
 		return result;
 	}	
 
-
-	public void  chgLoc(int diff)
+	//Call when you wanna generate new level
+	public void chgLoc(int diff)
 	{
-		this.position.x = width(diff);
-		this.bounds.x = xPos();
-
-
+		position.x = xPos();
+		bounds.width = width(diff);
 	}
 
 }
