@@ -44,7 +44,7 @@ public class World
 	public void generateLevel()
 	{
 		ship = new SpaceShip(320/2);
-		platform = new Platform(100, 100);	
+		platform = new Platform(3);	
 	}
 	
 	public void update(float deltaTime, float f,boolean up)

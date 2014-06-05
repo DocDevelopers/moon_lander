@@ -1,5 +1,4 @@
-#Mon Jun 02 21:26:35 EDT 2014
-warSrcDir=webapp/
-lastWarOutDir=C\:\\workspace\\moon_lander\\html\\war
 eclipse.preferences.version=1
+lastWarOutDir=/Users/admin/Desktop/moon_lander/html/war
+warSrcDir=webapp/
 warSrcDirIsOutput=false

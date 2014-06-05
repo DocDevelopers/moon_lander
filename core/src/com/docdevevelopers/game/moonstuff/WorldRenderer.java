@@ -53,6 +53,9 @@ public class WorldRenderer
 			batch.draw(Assets.CRegion, world.ship.position.x, world.ship.position.y, Assets.CRegion.getRegionWidth(), Assets.CRegion.getRegionHeight());
 		
 		batch.end();
+		shapes.begin(ShapeType.Filled);
+		shapes.rect(world.platform.position.x, world.platform.position.y, world.platform.bounds.width, world.platform.bounds.height);
+		shapes.end();
 		renderShapes();
 	}
 	
@@ -60,9 +63,7 @@ public class WorldRenderer
 	{
 		shapes.begin(ShapeType.Filled);
 		 shapes.setColor(0f, 0f, 0f, 1);
-		 shapes.rect(0, 0, 480, 95);
-		 shapes.rect(world.platform.position.x, world.platform.position.y, world.platform.bounds.width, world.platform.bounds.height);
-		 
+		 shapes.rect(0, 0, 480, 95); 
 		 shapes.end();
 	}
 	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Moonstuff</name>
+	<name>moon_lander</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -17,7 +17,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1401714798191</id>
+			<id>1401992432417</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
